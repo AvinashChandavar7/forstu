@@ -12,6 +12,27 @@ const validateAndFormatDate = (dateString, rowNumber) => {
   return validDate ? moment(dateString).toDate() : null;
 };
 
+export const processExcel = async (buffer) => {
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.load(buffer);
+
+  const sheet = workbook.getWorksheet(1);
+  const studentsData = [];
+
+  sheet.eachRow((row, rowNumber) => {
+    if (rowNumber !== 1) {
+      studentsData.push({
+        name: row.getCell(1).value,
+        email: row.getCell(2).value,
+        enrollmentDate: row.getCell(3).value,
+        state: row.getCell(4).value ?? 'Maharashtra',
+      });
+    }
+  });
+
+  return studentsData;
+};
+
 export const processJsonToExcelToDb = async (jsonFilePath, excelFilePath) => {
   const jsonData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'));
 

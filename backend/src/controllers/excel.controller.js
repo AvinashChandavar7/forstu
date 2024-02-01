@@ -5,12 +5,27 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 
 import { fileURLToPath } from 'url';
 import path from 'path';
-import { processJsonToExcelToDb, importExcelData } from "../utils/excelHelper.js";
+import { processExcel, processJsonToExcelToDb, importExcelData } from "../utils/excelHelper.js";
 import { Student } from "../models/student.model.js";
 
 // Get the __dirname equivalent in ES module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+
+
+const uploadExcel = asyncHandler(async (req, res) => {
+  const buffer = req.file.buffer;
+
+  const studentsData = await processExcel(buffer);
+
+
+  await Student.insertMany(studentsData);
+
+  return res.status(201).json(new ApiResponse(200, result, 'Import process completed.'));
+
+});
+
 
 const importJsonDataToExcelThenDb = asyncHandler(async (req, res) => {
   try {
@@ -101,6 +116,9 @@ const deleteStudent = asyncHandler(async (req, res) => {
 });
 
 export {
+  uploadExcel,
+
+
   importJsonDataToExcelThenDb,
   importDataFromExcel,
   createStudent,
