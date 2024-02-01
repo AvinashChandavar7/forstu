@@ -15,7 +15,11 @@ const __dirname = path.dirname(__filename);
 
 
 const uploadExcel = asyncHandler(async (req, res) => {
+  console.log('req.file:', req.file); // Check the file object
+
   const buffer = req.file.buffer;
+
+  console.log(buffer)
 
   const studentsData = await processExcel(buffer);
 

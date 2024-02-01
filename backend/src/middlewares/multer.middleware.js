@@ -3,7 +3,8 @@ import multer from "multer";
 const excelFilter = (req, file, cb) => {
   if (
     file.mimetype.includes('excel') ||
-    file.mimetype.includes('spreadsheetml')
+    file.mimetype.includes('spreadsheetml') ||
+    file.mimetype.includes('xlsx')
   ) {
     cb(null, true);
   } else {
