@@ -15,10 +15,7 @@ import { upload } from "../middlewares/multer.middleware.js";
 
 const router = Router();
 
-router.post('/uploadExcel', upload.single('file'), uploadExcel);
-
-
-
+router.post('/uploadExcel', upload.single('upload'), uploadExcel);
 
 
 router.post("/importJsonData", importJsonDataToExcelThenDb);

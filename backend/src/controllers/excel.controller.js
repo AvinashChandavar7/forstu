@@ -15,21 +15,26 @@ const __dirname = path.dirname(__filename);
 
 
 const uploadExcel = asyncHandler(async (req, res) => {
-  console.log('req.file:', req.file); // Check the file object
+
+  console.log('File Content:', req.file.buffer);
 
   const buffer = req.file.buffer;
 
-  console.log(buffer)
+  // if (!buffer) {
+  //   return res.status(400).json({ error: 'Invalid file buffer.' });
+  // }
 
-  const studentsData = await processExcel(buffer);
+  try {
+    const studentsData = await processExcel(buffer);
 
+    await Student.insertMany(studentsData);
 
-  await Student.insertMany(studentsData);
-
-  return res.status(201).json(new ApiResponse(200, result, 'Import process completed.'));
-
+    return res.status(201).json(new ApiResponse(200, studentsData, 'Import process completed.'));
+  } catch (error) {
+    console.error('Error processing Excel file:', error);
+    return res.status(500).json(new ApiError(500, 'Internal Server Error', error.message));
+  }
 });
-
 
 const importJsonDataToExcelThenDb = asyncHandler(async (req, res) => {
   try {
