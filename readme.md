@@ -1,5 +1,104 @@
 # Forstu Assessment
 
+## Task 1: Excel Data Importer (Node.js Script)
+
+### Background Context:
+
+As part of the scholarship management system, a Node.js script is required to efficiently handle the import of student data from an Excel file provided by the college.
+
+### Use Case:
+
+The college provides an Excel sheet with details of enrolled students. The script should read this file, extract relevant information such as student names, emails, and enrollment dates, and generate student profiles in the database.
+
+### Task Description:
+
+1. **Read Excel File:**
+
+   - Develop a script to read the provided Excel file.
+   - Extract relevant information (e.g., name, email, enrollment date).
+
+2. **Create Student Profiles into Database:**
+   - Generate student profiles in the database using the extracted data.
+   - Include default fields for all students in the profiles (e.g., set Default State to Maharashtra).
+
+## Task 2: Dynamic Form Builder (React Component)
+
+### Background Context:
+
+In the scholarship management system, a dynamic form is needed that adapts to each student's null values, providing a smooth and guided process for accurate scholarship processing.
+
+### Use Case:
+
+After profiling from the Excel data, students receive an email notification to fill out a dynamic form tailored to their specific scholarship eligibility criteria.
+
+### Task Description:
+
+1. **Dynamic Field Display:**
+
+   - Develop a React component that dynamically displays form fields based on the student's pending data.
+
+2. **Email Notifications:**
+
+   - Implement functionality to automatically send email notifications to students, prompting them to complete the dynamic form.
+
+3. **Form Validation & Submission:**
+
+   - Incorporate form validation to ensure accurate and valid information.
+   - Provide the ability to submit the form.
+
+4. **Progress Tracker:**
+   - Include a progress tracker within the form to guide students through the step-by-step process.
+
+## Task 3: Scholarship Assignment Algorithm (Node.js Algorithm)
+
+### Background Context:
+
+A robust Node.js algorithm is needed to automate the process of determining scholarship eligibility for students based on predefined criteria.
+
+### Use Case:
+
+The algorithm efficiently sifts through a large pool of student data, applying predefined criteria to automatically assign scholarships to deserving students.
+
+### Task Description:
+
+1. **Eligibility Criteria:**
+
+   - Define and understand eligibility criteria considering academic performance, financial need, and extracurricular activities.
+
+2. **Algorithm Implementation:**
+
+   - Develop a Node.js algorithm that evaluates student data against the predefined eligibility criteria.
+
+3. **Optimization:**
+
+   - Design the algorithm for optimal performance, considering speed and efficiency in searching and assigning scholarships.
+
+4. **Automation:**
+   - Automate the scholarship assignment process using the implemented algorithm.
+
+## Task 4: Interactive Dashboard - Admin Panel (React)
+
+### Background Context:
+
+The React application needs an interactive dashboard tailored for administrators, providing a comprehensive overview of scholarship assignments and tools for manual adjustments.
+
+### Use Case:
+
+Administrators access the dashboard to review scholarship assignments, with the ability to manually adjust assignments based on specific considerations.
+
+### Task Description:
+
+1. **Summary Display:**
+
+   - Create a React component displaying a concise summary of scholarship assignments for administrators.
+
+2. **Manual Adjustment Feature:**
+
+   - Implement functionality for administrators to review and manually adjust scholarship assignments within the dashboard.
+
+3. **User Authentication:**
+   - Implement user authentication specifically tailored for administrators, ensuring secure access to the dashboard features.
+
 # Backend
 
 The backend of this application is built using Express.js and provides a set of RESTful API endpoints for handling Excel-related operations and managing student data.
